@@ -115,3 +115,138 @@ function sum(...numbers) {
 console.log(sum(1, 2, 3, 4, 5, 10, 12));
 
 console.log("============== Arrow Function ==============")
+// Sesuai namanya, fungsi didefinisikan menggunakan tanda panah atau fat arrow ( => ). Tentunya penulisan arrow function ini akan lebih singkat.
+
+// # reguler function
+// function declaration
+function sayHello1(greet) {
+  console.log(`${greet}!`);
+}
+ 
+// function expression
+const sayName2 = function (name) {
+  console.log(`Nama saya ${name}`);
+}
+
+// # Arrow function
+// function expression
+const sayHello2 = (greet) => {
+  console.log(`${greet}!`);
+}
+ 
+const sayName3 = (name) => {
+  console.log(`Nama saya ${name}`);
+}
+
+// Pada arrow function kita tidak perlu menuliskan keyword function setiap membuat fungsi. Kita tetap menuliskan parameter di dalam tanda kurung lalu diikuti dengan tanda panah (=>) sebelum kurung kurawal.
+// Apabila fungsi hanya memiliki satu parameter, maka kita bisa menghapuskan tanda kurung seperti berikut:
+const sayName = (name) => console.log(`Nama saya ${name}`);
+sayName("Floatnesia");
+const sayHello = () => console.log("Selamat pagi semuanya!");
+sayHello();
+// Ketika sebuah fungsi perlu mengembalikan nilai, kita tidak perlu lagi menuliskan return (hanya bekerja untuk fungsi satu baris)
+const noReturn = (a, b) => a * b;
+console.log(noReturn(3, 4));
+
+console.log("============== Variable Scope ==============")
+// Variabel yang dapat diakses dari seluruh script disebut dengan “globally scoped”, sementara variabel yang hanya diakses hanya pada fungsi tertentu disebut dengan “locally scoped”.
+// Variabel JavaScript menggunakan fungsi untuk mengelola cakupannya. Jika variabel didefinisikan di luar fungsi, maka variabel tersebut bersifat global. Jika variabel didefinisikan di dalam fungsi, maka variabel bersifat lokal dan cakupannya hanya pada fungsi tersebut beserta turunannya.
+// global variable, dapat diakses pada parent() dan child()
+const a = 'a'; 
+ 
+function parent() {
+  // local variable, dapat diakses pada parent() dan child(), tetapi tidak dapat diakses di luar dari fungsi tersebut.
+  const b = 'b'; 
+
+  function child() {
+  // local variable, dapat diakses hanya pada fungsi child().
+    const c = 'c';
+  }
+}
+
+function multiplys(num) {
+  // const total = num * num;
+  total = num * num;
+  return total;
+}
+
+let total = 9;
+let number  = multiplys(20);
+
+console.log(total)
+// console.log(number)
+
+console.log("============== Closure ==============")
+// Sebelumnya kita telah tahu bahwa fungsi dapat didefinisikan dalam lingkup global atau di dalam fungsi lain. Suatu fungsi yang dapat mengakses variabel di dalam lexical scope-nya disebut dengan closure. Lexical scope berarti pada sebuah fungsi bersarang, fungsi yang berada di dalam memiliki akses ke variabel di lingkup induknya.
+function init() {
+  const name = 'Obi Wan';   // Variabel lokal di dalam scope fungsi init
+    
+  function greet() {      // Inner function, merupakan contoh closure
+    console.log(`Halo, ${name}`);   // Memanggil variabel yang dideklarasikan di parent function
+  }
+
+  greet();
+}
+
+init();
+
+// menggunakan return
+function inits() {
+  const name = 'Float Wan';
+
+  function greet() {
+    console.log(`Halo, ${name}`);
+  }
+
+  return greet;
+}
+const myFunction = inits();
+myFunction();
+
+// Kode di atas akan menghasilkan output yang sama. Perbedaannya adalah fungsi greet() dikembalikan (return) dari outer function-nya sebelum dieksekusi. Karena variabel name berada dalam scope init(), maka umumnya variabel tersebut akan hilang atau dihapus ketika fungsinya selesai dijalankan. Namun, pada kasus di atas fungsi greet() yang diakses melalui fungsi MyFunction() masih memiliki referensi atau akses ke variabel name. Variabel pada mekanisme di atas telah tertutup (close covered), yang berarti variabel tersebut berada di dalam closure.
+
+// JavaScript tidak memiliki cara untuk mendeklarasikan suatu fungsi atau variabel menjadi private seperti bahasa Java. Sehingga sebuah fungsi atau variabel bisa diakses dari mana pun. Kenapa kita membutuhkan private method? Salah satunya adalah untuk membatasi akses ke fungsi atau variabel.
+let counter = 0;
+const adds = () => {
+  return ++counter;
+}
+
+console.log(adds());
+console.log(adds());
+console.log(adds());
+counter = 23;
+console.log(adds());
+console.log(adds());
+
+// Nilai counter akan bertambah ketika kita memanggil fungsi add(). Namun, kita juga bisa mengubah nilai counter secara langsung dengan assignment operator. Pada contoh program yang lebih kompleks, sebaiknya hal ini dihindari karena perubahan langsung pada nilai counter bisa saja memunculkan bug.
+
+// Closure memungkinkan kita membuat fungsi dan variabel seolah menjadi private. Seperti inilah contoh program counter yang dibuat dengan closure
+const add = () => {
+  let counters = 0;
+    return () => {
+      return ++counters;
+  };
+}
+
+const addCounter = add();
+
+console.log(addCounter());
+// counters = 12 // akan error karena variabel private
+console.log(addCounter());
+console.log(addCounter());
+
+function minMax(arrayOfNumbers) {
+  let currentMin = arrayOfNumbers[0];
+  let currentMax = arrayOfNumbers[0];
+  for (value of arrayOfNumbers) {
+      if (value < currentMin) {
+          currentMin = value;
+      } else if (value > currentMax) {
+          currentMax = value;
+      }
+  }
+
+  console.log(`currentMin: ${currentMin}, currentMax: ${currentMax}`);
+}
+
+minMax([8, -6, 0, 9, 40, 2, 23, 50, 2, -3, -15, 15, -23, 71]);
