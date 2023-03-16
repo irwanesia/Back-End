@@ -35,6 +35,9 @@ const spaceship2 = {
 };
    
 // spaceship2 = { name: "New Millenium Falcon" }; // Error
+// harusnya
+spaceship2.name = "New Millenium Falcon";
+console.log(spaceship2);
 // Ketika kita mengubah object menggunakan assignment operator dan property/key-nya sudah ada, maka nilai di dalamnya akan tergantikan dengan nilai yang baru. Sedangkan, jika property dengan nama key yang ditentukan tidak ditemukan, maka property baru akan ditambahkan ke object.
 const spaceship3 = {
     name: "Millenium Falcon",
@@ -200,7 +203,7 @@ const myMap = new Map([
     ["London", "England"],
     ["Tokyo", "Japan"]
   ]);
-// mendapatkan nilainya berdasarkan key tertentu dengan metode get() dan untuk menambahkan pasangan key value dengan metode set()
+// untuk mendapatkan nilainya berdasarkan key tertentu dengan metode get() dan untuk menambahkan pasangan key value dengan metode set()
   console.log(capital.size);
   console.log(capital.get("London"));
   capital.set("New Delhi", "India");

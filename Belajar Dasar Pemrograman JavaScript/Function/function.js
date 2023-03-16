@@ -73,8 +73,8 @@ console.log("============== Function Parameter ==============")
 // Jika parameter dari fungsi adalah sebuah object, kita juga bisa memanfaatkan destructuring object untuk mendapatkan nilainya. Contohnya seperti berikut:
 const user = {
     id: 24,
-    displayName: 'kren',
-    fullName: 'Kylo Ren',
+    displayName: 'float',
+    fullName: 'floatnesia.co.id',
 };
   
 function introduce({displayName, fullName}) {
@@ -123,7 +123,7 @@ function sayHello1(greet) {
   console.log(`${greet}!`);
 }
  
-// function expression
+// # function expression
 const sayName2 = function (name) {
   console.log(`Nama saya ${name}`);
 }
