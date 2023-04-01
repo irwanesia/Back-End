@@ -1,8 +1,8 @@
-console.log("============== Paradigma Functional Programming ==============");
+console.log("============== Paradigma Functional Programming (FP) ==============");
 // Paradigma Functional Programming adalah paradigma pemrograman di mana proses komputasi didasarkan pada fungsi matematika murni. Functional Programming (selanjutnya akan kita singkat menjadi FP) ditulis dengan gaya deklaratif yang berfokus pada “what to solve” dibanding “how to solve” yang dianut oleh gaya imperatif.
 
 // Sebagai gambaran buat Anda yang belum tahu apa itu deklaratif dan imperatif lebih jauh, silakan simak contoh kode berikut.
-const names = ['Harry', 'Ron', 'Jeff', 'Thomas'];
+const names = ['Harry', 'Ron', 'Jeff', 'Thomas', 'Irwan'];
 
 const newNamesWithExcMark = [];
 
@@ -18,6 +18,7 @@ console.log(newNamesWithExcMark);
 
 // Lantas bagaimana dengan gaya deklaratif? Mari kita lihat kode dengan fungsi yang sama namun dengan gaya deklaratif.
 const newNamesWithExcMark2 = names.map((name) => `${name}!`);
+console.log("output array dengan gaya deklaratif");
 console.log(newNamesWithExcMark2);
 
 // Kesan apa yang pertama Anda rasakan ketika melihat kode di atas? Coba bandingkan dengan kode sebelumnya, tentu ini jauh lebih mudah dibaca dan ringkas. Yap! Inilah yang disebut dengan gaya deklaratif. Kita tidak perlu pusing untuk memikirkan cara manual untuk mencapai sebuah tujuan. Tidak ada proses looping manual; Tidak perlu tahu kapan harus berhenti dari looping; Kita cukup fokus pada “what to solve” alias apa yang ingin kita selesaikan atau capai.

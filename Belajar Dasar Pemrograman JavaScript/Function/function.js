@@ -112,7 +112,7 @@ function sum(...numbers) {
     return result;
 }
   
-console.log(sum(1, 2, 3, 4, 5, 10, 12));
+console.log(sum(1, 2, 3, 4, 5, 10, 12, 12));
 
 console.log("============== Arrow Function ==============")
 // Sesuai namanya, fungsi didefinisikan menggunakan tanda panah atau fat arrow ( => ). Tentunya penulisan arrow function ini akan lebih singkat.
@@ -238,7 +238,7 @@ console.log(addCounter());
 function minMax(arrayOfNumbers) {
   let currentMin = arrayOfNumbers[0];
   let currentMax = arrayOfNumbers[0];
-  for (value of arrayOfNumbers) {
+  for (let value of arrayOfNumbers) {
       if (value < currentMin) {
           currentMin = value;
       } else if (value > currentMax) {
