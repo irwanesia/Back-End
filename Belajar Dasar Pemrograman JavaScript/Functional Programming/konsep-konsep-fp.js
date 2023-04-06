@@ -43,7 +43,7 @@ const hitungLuasLingkaran2 = (jariJari) => {
 // Selain dilarang untuk bergantung terhadap nilai luar, pure function juga dilarang keras untuk mengubah nilai yang berada di luar baik secara sengaja atau tidak sengaja. Pure function tidak boleh menimbulkan efek samping (no side effect) ketika digunakan.
 // Agar lebih mudah dalam mengetahui apakah fungsi yang Anda buat sudah pure atau belum, pastikan 3 konsep ini ada pada fungsi yang Anda buat.
 
-    // 1.Mengembalikan nilai yang sama bila inputannya (nilai parameter) sama.
+    // 1. Mengembalikan nilai yang sama bila inputannya (nilai parameter) sama.
     // 2. Hanya bergantung pada argumen yang diberikan.
     // 3. Tidak menimbulkan efek samping.
 // Bila 3 konsep di atas terpenuhi, maka bisa dipastikan Anda membuat sebuah pure function.
@@ -141,9 +141,9 @@ sayHello()();
 
 // Teknik Higher-Order Function biasanya digunakan untuk:
 
-    // Mengabstraksi atau mengisolasi sebuah aksi, event, atau menangani alur asynchronous menggunakan callback, promise, dan lainnya.
-    // Membuat utilities yang dapat digunakan di berbagai tipe data.
-    // Membuat teknik currying atau function composition.
+    // 1. Mengabstraksi atau mengisolasi sebuah aksi, event, atau menangani alur asynchronous menggunakan callback, promise, dan lainnya.
+    // 2. Membuat utilities yang dapat digunakan di berbagai tipe data.
+    // 3. Membuat teknik currying atau function composition.
 // Array map() merupakan salah satu contoh Higher-Order Function yang ada di JavaScript. Karena dalam penggunaanya, ia menerima satu buah argumen yang merupakan sebuah function.
 
 // Dengan mengetahui adanya Higher-Order Function, Anda bisa membuat fungsi map() versi Anda sendiri.
