@@ -28,3 +28,62 @@ getUsers((users) => {
 // Catatan: Callback merupakan salah satu implementasi dari konsep High-Order Function yang sudah kita bahas pada modul Functional Programming.
 
 // Agar kode lebih mudah dibaca, Anda bisa mendeklarasikan fungsi callback di luar argumen seperti ini.
+
+// Proses yang dijalankan secara asynchronous, biasanya berpotensi menghasilkan error. Misalnya, sebuah fungsi yang mengambil data dari internet akan menghasilkan error ketika jaringan kita bermasalah. Contoh lainnya, ketika berkas tersebut tidak ditemukan, fungsi yang membacanya akan menghasilkan error.
+
+// Dengan alasan tersebut, pada fungsi callback selain membawa argumen data, ia juga membawa argumen error. Argumen error hanya akan memiliki nilai ketika proses asynchronous gagal atau mengalami gangguan.
+
+// Untuk lebih jelasnya, mari kita ubah fungsi getUsers() menjadi seperti ini
+
+function getUsers2(isOffline, callback){
+  // simulate network delay
+  setTimeout(()=> {
+    const users2 = ['irwan', 'andi', 'gibran', 'ahmad'];
+
+    if(isOffline){
+      callback(new Error('cannot retrive users due offline'), null);
+      return;
+    }
+
+    callback(null, users2);
+  }, 3000);
+}
+
+// Kami menambahkan argumen isOffline pada fungsi getUsers() untuk menentukan proses asynchronous berhasil atau gagal. Sebab prosesnya berpotensi gagal, nilai yang dibawa oleh fungsi callback harus disesuaikan.
+
+// Fungsi callback yang digunakan di JavaScript secara standar (convention) memiliki struktur seperti kode di bawah ini.
+
+// function callback(error, data) {
+  // logika ketika proses asynchrounous selesai
+// }
+
+// Argumen pertama dari fungsi callback merupakan error. Argumen ini hanya akan bernilai jika proses asynchronous gagal, sebaliknya biasanya bernilai null. Argumen kedua dari fungsi callback merupakan data yang dibawa ketika prosesnya berhasil. Jika proses asynchronous gagal, dia akan bernilai null.
+
+// Selain itu, Anda juga perlu mengingat convention yang ditetapkan oleh Node.js bahwa argumen callback selalu diletakkan terakhir. Itulah alasan kami mendefinisikan argumen isOffline kemudian callback pada fungsi getUsers().
+
+// Catatan: Harap diingat convention tersebut ditetapkan karena banyak proses asynchronous yang terdapat pada Node.js API menggunakan struktur tersebut dalam penggunaan callback, seperti fungsi fs.readFile().
+
+// Dengan diubahnya fungsi getUsers(), kita juga perlu menyesuaikan struktur callback-nya. Untuk menangani proses asynchronous pada fungsi getUsers(), baik ketika prosesnya berhasil maupun gagal, maka fungsi usersCallback() perlu diubah menjadi seperti ini.
+
+function usersCallback(error, users2) {
+  if(error){
+    console.log('process failed:', error.message);
+    return;
+  }
+
+  console.log('process success:', users2);
+}
+
+getUsers2(false, usersCallback);
+getUsers2(true, usersCallback);
+
+
+// Apakah Anda sudah paham dengan pola callback ini? Untuk mengasah pemahaman, cobalah selesaikan tantangan yang kami sediakan di bawah ini.
+
+// Tantangan!
+
+// Kami menyediakan fungsi asynchronous untuk mendapatkan nilai daftar provinsi di Indonesia dengan nama getProvinces(). Fungsi tersebut akan mengembalikan daftar provinsi pada pemanggilan pertama dan menghasilkan error pada pemanggilan kedua. Fungsi getProvinces() hanya menerima satu argumen, yakni fungsi callback yang perlu Anda buat.
+
+// Cobalah panggil fungsi tersebut dan tangani proses asynchronous-nya dengan pola callback. Pastikan callback yang Anda buat dapat menangani proses yang gagal dan berhasil.
+
+// Jika Anda berhasil menyelesaikan tantangan ini, hasilnya akan tampak seperti ini.
