@@ -41,3 +41,51 @@
  *   - pastikan Anda memanggil validateNumberInput menggunakan try .. catch.
  *   - bila block catch terpanggil, kembalikan fungsi detectTriangle dengan pesan error yang dibawa fungsi validateNumberInput.
  */
+
+
+// TODO 1
+class ValidationError extends error {
+    constructor(message){
+        super(message);
+        this.name = "ValidationError"
+    }
+}
+
+// TODO 2
+const validateNumberInput = (a, b, c) => {
+    if(typeof(a) !== "number") {
+        throw new ValidationError("Argumen pertama harus number");
+    }else if(typeof(b) !== "number"){
+        throw new ValidationError("Argumen kedua harus number");
+    }else if(typeof(c) !== "number"){
+        throw new ValidationError("Argumen ketiga harus number");
+    }
+}
+
+// TODO 3
+const detectTriangle = (a, b, c) => {
+    try {
+        validateNumberInput(a, b, c);
+    }catch(error){
+        return error.message;
+    }
+
+    if(a === b && b === c){
+        return 'Segitiga sama sisi';
+    }
+
+    if(a === b || a === c || b === c){
+        return 'Segitiga sama kaki';
+    }
+    
+    return 'Segitiga sembarang';    
+};
+
+console.log(detectTriangle(1,false,1));
+console.log(detectTriangle('a',3,5));
+console.log(detectTriangle(12,2,null));
+console.log(detectTriangle(12,2,2));
+console.log(detectTriangle(2,2,2));
+console.log(detectTriangle(1,2,3));
+
+module.exports = { ValidationError, validateNumberInput, detectTriangle };
