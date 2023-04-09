@@ -1,0 +1,1 @@
+Anda berhasil membaca teks dari berkas.
