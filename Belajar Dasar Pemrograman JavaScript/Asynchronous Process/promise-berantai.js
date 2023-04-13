@@ -82,3 +82,5 @@ function watchMovie() {
 }
 
 watchMovie();
+
+module.exports = {withDrawMoney, goInsideCinema, buyCinemaTicket}; 
