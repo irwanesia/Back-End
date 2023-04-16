@@ -1,3 +1,14 @@
+console.log("lanjutan dari callback, panggil api dengan fetch");
+const movies = fetch('http://www.omdbapi.com/?apikey=dca61bcc&s=avengers');
+console.log(movies); // yang dikembalikan bukan data film melainkan dalam bentuk promise
+
+// cara ambil dengan promise
+fetch('http://www.omdbapi.com/?apikey=dca61bcc&s=avengers')
+    .then(response => response.json())
+    .then(response => console.log(response));
+
+
+
 // promise (WEB Programing Unpas)
 // object yang merepresantasikan keberhasilan atau kegagalan sebuah event yang synchronous di masa yang akan datang
 
@@ -8,7 +19,7 @@
 // aksi tidak terpenuhi (catch)
 
 // contoh 1
-let ditepati = false;
+let ditepati = true;
 // const janji1 = new Promise((resolve, reject) => {
 //     if(ditepati) {
 //         resolve('janji telah ditepati');

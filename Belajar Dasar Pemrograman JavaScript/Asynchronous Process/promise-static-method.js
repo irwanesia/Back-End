@@ -77,4 +77,4 @@ Promise.any([promiseReject1, promiseReject2, promiseReject3])
  .then((value) => console.log(value))
  .catch((error) => console.log(error.message)); // All Promises were rejectedS
 
-//  Static method Promise, seperti Promise.all(), Promise.race(), Promise.allSettled(), dan Promise.any() dapat sangat membantu ketika bekerja dengan operasi asynchronous menggunakan Promise. Dengan menggunakan method-method tersebut, kita dapat mengeksekusi banyak Promise secara paralel dan mengelola hasilnya dengan lebih efisien.
+//  Static method Promise, seperti Promise.all(), Promise.race(), Promise.allSettled(), dan Promise.any() dapat sangat membantu ketika bekerja dengan operasi asynchronous menggunakan Promise. Dengan menggunakan method-method tersebut, kita dapat mengeksekusi banyak Promise secara paralel dan mengelola hasilnya dengan lebih efisien.z
