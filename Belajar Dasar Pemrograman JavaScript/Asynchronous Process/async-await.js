@@ -33,13 +33,13 @@ async function watchMovie(amount) {
     }
 }
 
-watchMovie(10)
+watchMovie(8)
     .then((result) => console.log(result))
     .catch((error) => console.log(error.message));
 
-watchMovie(5)
-    .then((result) => console.log(result))
-    .catch((error) => console.log(error.message));
+// watchMovie(5)
+//     .then((result) => console.log(result))
+//     .catch((error) => console.log(error.message));
 
 // Untuk menggunakan fitur async dan await, kita perlu mengubah sebuah fungsi agar berjalan secara asynchronous dengan menambahkan kata kunci async pada awal fungsi. Setelah itu, di dalam fungsi tersebut, kita bisa mengambil data yang dihasilkan oleh Promise dengan menggunakan sintaks await. Sintaks await akan memberi tahu JavaScript untuk menunggu proses Promise selesai sebelum mengeksekusi kode baris selanjutnya. Jadi, kita bisa melakukan Promise berantai tanpa perlu menggunakan .then(). Simak juga cara penanganan error-nya. Kita sudah tidak lagi menggunakan .catch(), tetapi try dan catch layaknya proses synchronous.
 

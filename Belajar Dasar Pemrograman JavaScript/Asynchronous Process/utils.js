@@ -36,4 +36,4 @@ function goInsideCinema(ticket) {
     });
 }
   
-module.exports = { withDrawMoney, buyCinemaTicket, goInsideCinema };
+module.exports = { withDrawMoney, buyCinemaTicket, goInsideCinema }; 
