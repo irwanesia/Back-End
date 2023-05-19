@@ -1,12 +1,23 @@
 const fs = require('fs');
 const { resolve } = require('path');
 
-const fileReadCallback = (error, data) => {
-    if (error) {
-        console.log('gagal membaca input text');
-        return;
-    }
-    console.log(data);
-}
+// read
+const readableStream = fs.createReadStream(resolve(__dirname, './input.txt'), {
+    highWaterMark: 15
+});
 
-fs.readFile(resolve(__dirname, './input.txt'), 'UTF-8', fileReadCallback);
+// create
+const writableStream = fs.createWriteStream(resolve(__dirname, './output.txt'));
+
+// jalankan events stream
+readableStream.on('readable', ()=>{
+    try {
+        writableStream.write(`[${readableStream.read()}]\n`);
+    }catch(error){
+        // // catch the error when the chunk cannot be read.
+    }
+});
+
+readableStream.on('end', ()=>{
+    console.log('Done');
+});
