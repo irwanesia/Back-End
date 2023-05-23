@@ -16,3 +16,21 @@ const init = async () => {
 }
 
 init();
+
+// 5. MEMBUAT RESPONSE TOOLKIT
+// detailed notaion
+const handler = (request, h) => {
+    const response = h.response('success');
+    response.type('text/plain');
+    response.header('X-Custom', 'some-value');
+    return response;
+}
+
+
+// cahined notaion
+const handlers = (request, h) => {
+    const response = h.response('success')
+    .type('text/plain')
+    .header('X-Custom', 'some-value');
+    return response;
+}
